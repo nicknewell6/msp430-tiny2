@@ -1,0 +1,35 @@
+2018-10-17 Nick
+
+Thought I'd include my trials and tribulations with Keith as he'll run into this too. The 
+MSP-FET debugger is working on my Windows 7 but is still misbehaving on my Windows 10 
+laptop (but gets further it just complains the target isn't plugged in when it is).
+
+It seems to get stuck very easily when switching back and forth between computers but on 
+Windows 7 I can now recover without rebooting Windows with the following: unplug the 
+MSP-FET pod from the target. Then unplug the MSP-FET pod from the PC until the USB manager 
+beeps and removes the device.
+
+Plug the MSP-FET pod back in to the PC and two serial ports will appear on PC. Now plug 
+in the target cable into the MSP-FET pod and you should be able to use CCS to load and run.
+
+Steps to get it working included: 
+1. I ran the installCerts.bat file that comes with the CDC driver 
+(see c:\ti\ccsv8\ccs_base\emulation\drivers\msp430\USB_CDC directory).
+
+2. I connected just the MSP-FET to the PC and ran the debugger. The PC should see the two 
+serial ports and then I ran the debugger (still no target connected).
+
+3. The debugger will complain about the pod's firmware and give you a chance to upgrade it. 
+You will need to repeat step 2 and 3 at least twice I did it 3 times before it settled down.
+
+4. Once the debugger is happy it will fail because there's no target, so I cancelled out 
+connected the target and than ran the debugger again... and it worked.
+
+I did try to run the INF file in the USB_CDC directory at least 10 different ways with no 
+visible success, so its possible that had some effect but it looked none of those attempts 
+managed to install anything so the original USB_CDC driver install with the IDE is probably 
+the one that's currently running.
+
+After it was working I did get a communication error similar to the Launchpad error and had 
+to reboot Windows but since than its been okay other than the little trick I mentioned at 
+the beginning to deal with switching PCs.

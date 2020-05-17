@@ -1,0 +1,3 @@
+MSP430Flasher.exe -e ERASE_TOTAL
+
+\ti\MSPFlasher_1.3.18\MSP430Flasher.exe -e ERASE_TOTAL
